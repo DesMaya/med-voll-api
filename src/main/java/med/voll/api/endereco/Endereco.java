@@ -2,6 +2,8 @@ package med.voll.api.endereco;
 
 
 import jakarta.persistence.Embeddable;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 @Embeddable
 public class Endereco {
@@ -25,6 +27,32 @@ public class Endereco {
     }
 
     public Endereco() {}
+
+    public void atualizarInformacoes(@NotNull @Valid DadosEndereco dados) {
+        if (dados.logradouro() != null) {
+            this.logradouro = dados.logradouro();
+        }
+        if (dados.bairro() != null) {
+            this.bairro = dados.bairro();
+        }
+        if (dados.cep() != null) {
+            this.cep = dados.cep();
+        }
+        if (dados.numero() != null) {
+            this.numero = dados.numero();
+        }
+        if (dados.compelemento() != null) {
+            this.complemento = dados.compelemento();
+        }
+        if (dados.cidade() != null) {
+            this.cidade = dados.cidade();
+        }
+        if (dados.uf() != null) {
+            this.uf = dados.uf();
+        }
+
+
+    }
 
     public String getLogradouro() {
         return logradouro;
@@ -81,4 +109,5 @@ public class Endereco {
     public void setUf(String uf) {
         this.uf = uf;
     }
+
 }
