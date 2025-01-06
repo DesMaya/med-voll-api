@@ -1,16 +1,8 @@
 package med.voll.api.paciente;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import med.voll.api.endereco.Endereco;
 
-@Getter
-@EqualsAndHashCode(of = "id")
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity(name = "Paciente")
 @Table(name = "pacientes")
 public class Paciente {
@@ -35,4 +27,7 @@ public class Paciente {
         this.endereco = new Endereco(dados.endereco());
     }
 
+    public Paciente() {
+
+    }
 }
