@@ -23,8 +23,11 @@ public class Medico {
     @Embedded
     private Endereco endereco;
 
+    private boolean ativo;
+
 
     public Medico(DadosCadastroMedico dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
@@ -49,8 +52,20 @@ public class Medico {
         }
     }
 
+    public void excluir() {
+        this.ativo = false;
+    }
+
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 
     public void setNome(String nome) {
@@ -104,6 +119,7 @@ public class Medico {
     public Endereco getEndereco() {
         return endereco;
     }
+
 }
 
 
