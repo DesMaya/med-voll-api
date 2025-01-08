@@ -38,6 +38,7 @@ public class MedicoController {
                 body(new DadosDetalhamentoMedico(medico));
     }
 
+
     @GetMapping
     public ResponseEntity<Page<DadosListagemMedico>> listar(
             @PageableDefault(
@@ -66,6 +67,13 @@ public class MedicoController {
         var medico = repository.getReferenceById(id);
         medico.excluir();
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}")
+    @Transactional
+    public ResponseEntity detalhar(@PathVariable Long id) {
+        var medico = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoMedico(medico));
     }
 
 }
