@@ -1,17 +1,18 @@
-package med.voll.api.domain.consulta.validacoes;
+package med.voll.api.domain.consulta.validacoes.agendamento;
 
 import med.voll.api.domain.ValidacaoException;
 import med.voll.api.domain.consulta.DadosAgendamentoConsulta;
+import org.springframework.stereotype.Component;
 
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class ValidadorHorarioAntecedencia {
+@Component("ValidadorHorarioAntecedenciaAgendamento")
+public class ValidadorHorarioAntecedencia implements ValidadorAgendamentoDeConsulta {
 
     public void validar(DadosAgendamentoConsulta dados) {
         var dataConsulta = dados.data();
-        var agora = LocalDate.now();
+        var agora = LocalDateTime.now();
         var diferencaEmMituos = Duration.between(agora, dataConsulta).toMinutes();
 
         if(diferencaEmMituos <= 30) {
